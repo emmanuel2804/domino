@@ -31,7 +31,7 @@ class Inteligente(Jugador):
                 count += 1
 
         if ficha[0] + ficha[1] == mayor:
-            return 1/count
+            return 1 / count
         else:
             return 0
 
@@ -59,7 +59,7 @@ class Inteligente(Jugador):
 
         index = self.fichas.index(ficha)
         if cantidad[index] == mayor:
-            return 1/_count
+            return 1 / _count
         else:
             return 0
 
@@ -68,7 +68,7 @@ class Inteligente(Jugador):
 
         for _ficha in self.fichas:
             if ficha[0] == _ficha[0] or ficha[0] == _ficha[1] or \
-              ficha[1] == _ficha[0] or ficha[1] == _ficha[1]:
+                    ficha[1] == _ficha[0] or ficha[1] == _ficha[1]:
                 count += 1
 
         return count
@@ -79,17 +79,17 @@ class Inteligente(Jugador):
         else:
             return 0
 
-    def escoger_ficha(self, extremo1, extremo2):
+    def escoger_ficha(self, extremo1, extremo2, *cant_move):
         mayor = 0
         _ficha = 0
-        
+
         for ficha in self.fichas:
             if ficha[0] == extremo1 or ficha[0] == extremo2 or \
-              ficha[1] == extremo1 or ficha[1] == extremo2 or \
-              (extremo1 == -1 and extremo2 == -1):
-                
+                    ficha[1] == extremo1 or ficha[1] == extremo2 or \
+                    (extremo1 == -1 and extremo2 == -1):
+
                 valores = []
-                
+
                 valores.append(self.eval_aleatorio(ficha))
                 valores.append(self.eval_bota_gorda(ficha))
                 valores.append(self.eval_bota_gorda_suave(ficha))
@@ -104,4 +104,4 @@ class Inteligente(Jugador):
                     mayor = val
                     _ficha = ficha
 
-        return _ficha
+        return _ficha, -1
